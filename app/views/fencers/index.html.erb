@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Fencers</h1>
+
+<div id="fencers">
+  <% @fencers.each do |fencer| %>
+    <%= render fencer %>
+    <p>
+      <%= link_to "Show this fencer", fencer %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New fencer", new_fencer_path %>

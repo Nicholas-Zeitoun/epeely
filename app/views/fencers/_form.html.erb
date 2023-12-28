@@ -1,0 +1,27 @@
+<%= form_with(model: fencer) do |form| %>
+  <% if fencer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(fencer.errors.count, "error") %> prohibited this fencer from being saved:</h2>
+
+      <ul>
+        <% fencer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :points, style: "display: block" %>
+    <%= form.text_field :points %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

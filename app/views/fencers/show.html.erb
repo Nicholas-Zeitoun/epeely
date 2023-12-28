@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @fencer %>
+
+<div>
+  <%= link_to "Edit this fencer", edit_fencer_path(@fencer) %> |
+  <%= link_to "Back to fencers", fencers_path %>
+
+  <%= button_to "Destroy this fencer", @fencer, method: :delete %>
+</div>
