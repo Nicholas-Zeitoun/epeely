@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<% if @article.photo.attached? %>
+<% if @fencer.photo.attached? %>
   <%= cl_image_tag @fencer.photo.key, height: 300, width: 400, crop: :fill %>
 <% end %>
 
