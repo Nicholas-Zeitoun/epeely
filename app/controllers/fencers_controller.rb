@@ -53,6 +53,6 @@ class FencersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def fencer_params
-      params.require(:fencer).permit(:name, :points)
+      params.require(:fencer).permit(:name, :points, :photo)
     end
 end

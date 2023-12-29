@@ -1,4 +1,4 @@
-<%= form_with(model: fencer) do |form| %>
+<%= simple_form_for(fencer) do |form| %>
   <% if fencer.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(fencer.errors.count, "error") %> prohibited this fencer from being saved:</h2>
@@ -20,6 +20,13 @@
     <%= form.label :points, style: "display: block" %>
     <%= form.text_field :points %>
   </div>
+
+  <div>
+    <%= form.input :photo, as: :file %>
+    <%= form.text_field :points %>
+  </div>
+
+  
 
   <div>
     <%= form.submit %>
