@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :scores do
+    resources :scores, only: [:new]
+  end
+  resources :matches
   resources :fencers
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
