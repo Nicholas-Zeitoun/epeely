@@ -8,20 +8,36 @@ class MatchesController < ApplicationController
 
   # GET /matches/1
   def show
+    @score1 = @match.scores.first
   end
 
   # GET /matches/new
   def new
     @match = Match.new
+    @fencers = Fencer.all
+
   end
 
   # GET /matches/1/edit
   def edit
+    @score1
+    @score2
   end
 
   # POST /matches
   def create
     @match = Match.new(match_params)
+    @match.save
+    @fencer1 = Fencer.find(1)
+    @fencer2 = Fencer.find(2)
+    @score1 = Score.new(points: 0)
+    @score2 = Score.new(points: 0)
+    @score1.match = @match
+    @score1.fencer = @fencer1
+    @score2.match = @match
+    @score2.fencer = @fencer2
+    @score1.save
+    @score2.save
 
     if @match.save
       redirect_to @match, notice: "Match was successfully created."
@@ -32,7 +48,13 @@ class MatchesController < ApplicationController
 
   # PATCH/PUT /matches/1
   def update
-    if @match.update(match_params)
+    @score1 = @match.scores.first
+    @score1.points = match_params["score_1"].to_i
+    @score1.save
+    @score2 = @match.scores.second
+    @score2.points = match_params["score_2"].to_i
+    @score2.save
+    if match_params
       redirect_to @match, notice: "Match was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
@@ -53,6 +75,6 @@ class MatchesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def match_params
-      params.fetch(:match, {})
+      params.fetch(:match, :score_1, :score_2, {})
     end
 end

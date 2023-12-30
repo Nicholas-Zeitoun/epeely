@@ -4,9 +4,10 @@
 
 <div id="matches">
   <% @matches.each do |match| %>
-    <%= render match %>
+    <%= match.fencers.first.name %> <%= match.scores.first.points %> - <%= match.fencers.second.name %> <%= match.scores.second.points %> 
     <p>
       <%= link_to "Show this match", match %>
+      <%= link_to "Edit this match", edit_match_path(match) %> |
     </p>
   <% end %>
 </div>
