@@ -1,5 +1,6 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: %i[ show edit update destroy ]
+  before_action :set_update, only: %i[ update ]
 
   # GET /matches
   def index
@@ -28,8 +29,8 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(match_params)
     @match.save
-    @fencer1 = Fencer.find(1)
-    @fencer2 = Fencer.find(2)
+    @fencer1 = Fencer.first
+    @fencer2 = Fencer.last
     @score1 = Score.new(points: 0)
     @score2 = Score.new(points: 0)
     @score1.match = @match
@@ -49,10 +50,10 @@ class MatchesController < ApplicationController
   # PATCH/PUT /matches/1
   def update
     @score1 = @match.scores.first
-    @score1.points = match_params["score_1"].to_i
+    @score1.points = update_params[:score_1].to_i
     @score1.save
     @score2 = @match.scores.second
-    @score2.points = match_params["score_2"].to_i
+    @score2.points = update_params[:score_2].to_i
     @score2.save
     if match_params
       redirect_to @match, notice: "Match was successfully updated.", status: :see_other
@@ -73,8 +74,16 @@ class MatchesController < ApplicationController
       @match = Match.find(params[:id])
     end
 
+    def set_update
+      @match = Match.find(params[:id])
+    end
+
     # Only allow a list of trusted parameters through.
     def match_params
+      params.fetch(:match, {})
+    end
+
+    def update_params
       params.fetch(:match, :score_1, :score_2, {})
     end
 end
