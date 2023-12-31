@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :poules
   resources :scores do
     resources :scores, only: [:new]
   end

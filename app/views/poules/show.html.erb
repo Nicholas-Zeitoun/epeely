@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @poule %>
+
+<div>
+  <%= link_to "Edit this poule", edit_poule_path(@poule) %> |
+  <%= link_to "Back to poules", poules_path %>
+
+  <%= button_to "Destroy this poule", @poule, method: :delete %>
+</div>
