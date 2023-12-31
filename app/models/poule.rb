@@ -1,6 +1,6 @@
 class Poule < ApplicationRecord
-    has_many :matches
-    has_many :fencers
+    has_many :matches, dependent: :destroy
+    has_many :fencers, through: :matches
 end
 
 

@@ -1,2 +1,13 @@
 <div id="<%= dom_id poule %>">
+<% poule.matches.each_with_index do |match, index| %>
+<div class="card">
+  <p>Match <%= index + 1 %></p>
+  <% fencer1 = match.fencers.first.name %> 
+  <% fencer1_score = match.scores.first.points %>
+  <% fencer2 =match.fencers.second.name %> 
+  <% fencer2_score = match.scores.second.points %>
+  <%= fencer1 %>: <%= fencer1_score %> - <%= fencer2 %>: <%= fencer2_score %>
+  <%= link_to "Update Scores", edit_match_path(match) %>
+</div>
+<% end  %>
 </div>
