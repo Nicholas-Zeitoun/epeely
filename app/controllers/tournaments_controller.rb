@@ -1,5 +1,6 @@
 class TournamentsController < ApplicationController
   before_action :set_tournament, only: %i[ show edit update destroy ]
+  before_action :set_update, only: %i[ update ]
 
   # GET /tournaments
   def index
@@ -14,14 +15,18 @@ class TournamentsController < ApplicationController
   def new
     @tournament = Tournament.new
   end
-
+  
   # GET /tournaments/1/edit
   def edit
+    @fencers = Fencer.order(points: :desc)
+    @first_fencer = @fencers.first
   end
 
   # POST /tournaments
   def create
     @tournament = Tournament.new(tournament_params)
+    @fencers = Fencer.all
+    @tournament.fencers = @fencers
 
     if @tournament.save
       redirect_to @tournament, notice: "Tournament was successfully created."
@@ -32,7 +37,16 @@ class TournamentsController < ApplicationController
 
   # PATCH/PUT /tournaments/1
   def update
-    if @tournament.update(tournament_params)
+    participants = params[:tournament][:fencer_ids]
+    @tournament.fencers = []
+    # debug
+    participants.shift
+    participants.each do | participant |
+      new_participant = Fencer.find(participant.to_i)
+      @tournament.fencers << new_participant
+    end
+    @tournament.save
+    if update_params
       redirect_to @tournament, notice: "Tournament was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
@@ -51,8 +65,17 @@ class TournamentsController < ApplicationController
       @tournament = Tournament.find(params[:id])
     end
 
+    def set_update
+      @tournament = Tournament.find(params[:id])
+    end
+
     # Only allow a list of trusted parameters through.
     def tournament_params
       params.fetch(:tournament, {})
     end
+
+    def update_params
+      params.fetch(:tournament, :fencers, {})
+    end
+
 end

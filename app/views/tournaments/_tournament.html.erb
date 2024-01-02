@@ -1,2 +1,6 @@
 <div id="<%= dom_id tournament %>">
+<p>Participants</p>
+<% tournament.fencers.each do | fencer | %>
+    <p><%= fencer.name %></p>
+<% end %>
 </div>
