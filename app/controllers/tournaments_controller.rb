@@ -39,18 +39,25 @@ class TournamentsController < ApplicationController
   def update
     participants = params[:tournament][:fencer_ids]
     @tournament.fencers = []
-    # debug
+    # Only getting fencers that have been selected for participation
     participants.shift
     participants.each do | participant |
       new_participant = Fencer.find(participant.to_i)
       @tournament.fencers << new_participant
     end
-    
-    first_poule = Poule.new(:tournament => @tournament)
-    first_poule.save!
-    
-    if @tournament.fencers.count == 5
-      five_fencers(first_poule, @tournament.fencers)
+
+    poule_breakdown = test(@tournament.fencers.count)
+    poule_breakdown[:number_of_poules].times do | index |
+      poule_no = index+1
+      poule_fencers = []
+      poule_breakdown["poule_#{poule_no.to_s}_fencers"].each do | fencer_index |
+      puts "🤺🤺🤺 #{fencer_index}" 
+        fencer =  @tournament.fencers.order(points: :desc)[fencer_index.to_i - 1]
+        poule_fencers << fencer
+      end
+      poule = Poule.new(:tournament => @tournament)
+      poule.save!
+      five_fencers(poule, poule_fencers)
     end
 
     @tournament.save
@@ -59,6 +66,20 @@ class TournamentsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def test(number_of_fencers)
+    #{ number_of_poules, poule_1_fencers, poule_2_fencers, poule_n_fencers... }
+    poule_breakdown = {}
+    case number_of_fencers
+      when 5
+        poule_breakdown = { number_of_poules: 1, "poule_1_fencers" => [1,2,3,4,5] }
+      when 10
+        poule_breakdown = { number_of_poules: 2, "poule_1_fencers" => [1,4,6,8,10], "poule_2_fencers" => [2,3,4,5,7,9] }
+      else
+        poule_breakdown = 0
+    end
+    return poule_breakdown
   end
 
   # Poule of 5

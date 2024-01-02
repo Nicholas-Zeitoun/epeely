@@ -3,4 +3,9 @@
 <% tournament.fencers.each do | fencer | %>
     <p><%= fencer.name %></p>
 <% end %>
+<% tournament.poules.each do | poule | %>
+    <% poule.fencers.each do | fencer | %>
+        <%= fencer.name %>
+    <% end %>
+<% end %>
 </div>
