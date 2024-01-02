@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_31_042322) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_02_015210) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +59,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_31_042322) do
   create_table "poules", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "tournament_id"
+    t.index ["tournament_id"], name: "index_poules_on_tournament_id"
   end
 
   create_table "scores", force: :cascade do |t|
@@ -71,9 +73,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_31_042322) do
     t.index ["match_id"], name: "index_scores_on_match_id"
   end
 
+  create_table "tournaments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "matches", "poules"
+  add_foreign_key "poules", "tournaments"
   add_foreign_key "scores", "fencers"
   add_foreign_key "scores", "matches"
 end
