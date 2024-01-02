@@ -4,7 +4,13 @@
 
 <div id="poules">
   <% @poules.each do |poule| %>
-    <%= render poule %>
+    <%#= render poule %>
+    <p>Fencers:</p>
+    <% fencers = poule.fencers.uniq %>
+    <% fencers.each do |fencer| %>
+      <%= fencer.name %>
+      <br>
+    <% end %>
     <p>
       <%= link_to "Show this poule", poule %>
     </p>
