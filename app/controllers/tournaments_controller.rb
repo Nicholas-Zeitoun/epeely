@@ -46,7 +46,7 @@ class TournamentsController < ApplicationController
       @tournament.fencers << new_participant
     end
 
-    poule_breakdown = test(@tournament.fencers.count)
+    poule_breakdown = poule_info(@tournament.fencers.count)
     poule_breakdown[:number_of_poules].times do | index |
       poule_no = index+1
       poule_fencers = []
@@ -57,7 +57,8 @@ class TournamentsController < ApplicationController
       end
       poule = Poule.new(:tournament => @tournament)
       poule.save!
-      five_fencers(poule, poule_fencers)
+      # five_fencers(poule, poule_fencers)
+      match_creation(poule, poule_fencers)
     end
 
     @tournament.save
@@ -68,18 +69,73 @@ class TournamentsController < ApplicationController
     end
   end
 
-  def test(number_of_fencers)
+  def poule_info(number_of_fencers)
     #{ number_of_poules, poule_1_fencers, poule_2_fencers, poule_n_fencers... }
     poule_breakdown = {}
     case number_of_fencers
       when 5
         poule_breakdown = { number_of_poules: 1, "poule_1_fencers" => [1,2,3,4,5] }
+      when 6
+        poule_breakdown = { number_of_poules: 1, "poule_1_fencers" => [1,2,3,4,5,6] }
+      when 7
+        poule_breakdown = { number_of_poules: 1, "poule_1_fencers" => [1,2,3,4,5,6,7] }
+      when 8
+        poule_breakdown = { number_of_poules: 1, "poule_1_fencers" => [1,2,3,4,5,6,7,8] }
+      when 9
+        poule_breakdown = { number_of_poules: 2, "poule_1_fencers" => [1,3,5,7,9], "poule_2_fencers" => [2,4,6,8] }
       when 10
-        poule_breakdown = { number_of_poules: 2, "poule_1_fencers" => [1,4,6,8,10], "poule_2_fencers" => [2,3,4,5,7,9] }
+        poule_breakdown = { number_of_poules: 2, "poule_1_fencers" => [1,4,6,8,10], "poule_2_fencers" => [2,3,5,7,9] }
       else
         poule_breakdown = 0
     end
     return poule_breakdown
+  end
+
+  def match_info(number_of_fencers)
+    match_breakdown = []
+    case number_of_fencers
+      when 4
+        match_breakdown = [ 6, [0,1], [2,3], [1,2],
+                               [0,2], [3,0], [3,1],]
+      when 5
+        match_breakdown = [ 10, [0,1], [2,3], [4,0], [1,2], [4,3],
+                                [0,2], [1,4], [3,0], [2,4], [3,1],]
+      when 6
+        match_breakdown = [ 15, [0,1], [3,2], [5,4], [2,0], [1,5],
+                                [4,3], [0,5], [2,4], [3,1], [4,0],
+                                [5,3], [1,2], [0,3], [4,1], [2,5]]
+      when 7
+        match_breakdown = [ 21, [0,1], [2,3], [4,0], [1,2], [4,3],
+                                [0,2], [1,4], [3,0], [2,4], [3,1],
+                                [0,2], [1,4], [3,0], [2,4], [3,1],
+                                [0,2], [1,4], [3,0], [2,4], [3,1],
+                                [0,0]]
+      when 8
+        match_breakdown = [ 28, [0,1], [2,3], [4,0], [1,2], [4,3],
+                                [0,2], [1,4], [3,0], [2,4], [3,1],]
+      else
+        match_breakdown = 0
+    end
+    return match_breakdown
+  end
+
+  # Match creation functionality
+  def match_creation(poule, fencers)
+    match_info = match_info(fencers.count)
+    # Create matches as required by the poule info
+    match_info[0].times do | index |
+      match = Match.new(:poule => poule)
+      match.save!
+      # Create new scores
+      @score1 = Score.new(points: 0)
+      @score2 = Score.new(points: 0)
+      @score1.match = match
+      @score1.fencer = fencers[match_info[index+1][0]]
+      @score1.save
+      @score2.match = match
+      @score2.fencer = fencers[match_info[index+1][1]]
+      @score2.save
+    end
   end
 
   # Poule of 5
