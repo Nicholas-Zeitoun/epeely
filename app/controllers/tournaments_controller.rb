@@ -84,7 +84,51 @@ class TournamentsController < ApplicationController
       when 9
         poule_breakdown = { number_of_poules: 2, "poule_1_fencers" => [1,3,5,7,9], "poule_2_fencers" => [2,4,6,8] }
       when 10
-        poule_breakdown = { number_of_poules: 2, "poule_1_fencers" => [1,4,6,8,10], "poule_2_fencers" => [2,3,5,7,9] }
+        poule_breakdown = { number_of_poules: 2, "poule_1_fencers" => [1,4,5,8,9], "poule_2_fencers" => [2,3,6,7,10] }
+      when 11
+        poule_breakdown = { number_of_poules: 2, "poule_1_fencers" => [1,4,5,8,9], "poule_2_fencers" => [2,3,6,7,10,11] }
+      when 12
+        poule_breakdown = { number_of_poules: 2, "poule_1_fencers" => [1,4,5,8,9,12], "poule_2_fencers" => [2,3,6,7,10,11] }
+      when 13
+        poule_breakdown = { number_of_poules: 2, "poule_1_fencers" => [1,4,5,8,9,12,13], "poule_2_fencers" => [2,3,6,7,10,11] }
+      when 14
+        poule_breakdown = { number_of_poules: 2, "poule_1_fencers" => [1,4,5,8,9,12,13], "poule_2_fencers" => [2,3,6,7,10,11,14] }
+      when 15
+        poule_breakdown = { number_of_poules: 3, "poule_1_fencers" => [1,6,7,12,13], "poule_2_fencers" => [2,5,8,11,14], "poule_3_fencers" => [3,4,9,10,15] }
+      when 16
+        poule_breakdown = { number_of_poules: 3, "poule_1_fencers" => [1,6,7,12,13], "poule_2_fencers" => [2,5,8,11,14], "poule_3_fencers" => [3,4,9,10,15,16] }
+      when 17
+        poule_breakdown = { number_of_poules: 3, "poule_1_fencers" => [1,6,7,12,13], "poule_2_fencers" => [2,5,8,11,14,17], "poule_3_fencers" => [3,4,9,10,15,16] }
+      when 18
+        poule_breakdown = { number_of_poules: 3, "poule_1_fencers" => [1,6,7,12,13,18], "poule_2_fencers" => [2,5,8,11,14,17], "poule_3_fencers" => [3,4,9,10,15,16] }
+      when 19
+        poule_breakdown = { number_of_poules: 3, "poule_1_fencers" => [1,6,7,12,13,18,19], "poule_2_fencers" => [2,5,8,11,14,17], "poule_3_fencers" => [3,4,9,10,15,16] }
+      when 20
+        poule_breakdown = { number_of_poules: 3, "poule_1_fencers" => [1,6,7,12,13,18,19], "poule_2_fencers" => [2,5,8,11,14,17,20], "poule_3_fencers" => [3,4,9,10,15,16] }
+      when 21
+        poule_breakdown = { number_of_poules: 3, "poule_1_fencers" => [1,6,7,12,13,18,19], "poule_2_fencers" => [2,5,8,11,14,17,20], "poule_3_fencers" => [3,4,9,10,15,16,21] }
+      when 22
+        poule_breakdown = { number_of_poules: 4, "poule_1_fencers" => [1,8,9,16,17], "poule_2_fencers" => [2,7,10,15,18], "poule_3_fencers" => [3,6,11,14,19,22], "poule_4_fencers" => [4,5,12,13,20,21] }
+      when 23
+        poule_breakdown = { number_of_poules: 4, "poule_1_fencers" => [1,8,9,16,17], "poule_2_fencers" => [2,7,10,15,18,23], "poule_3_fencers" => [3,6,11,14,19,22], "poule_4_fencers" => [4,5,12,13,20,21] }
+      when 24
+        poule_breakdown = { number_of_poules: 4, "poule_1_fencers" => [1,8,9,16,17,24], "poule_2_fencers" => [2,7,10,15,18,23], "poule_3_fencers" => [3,6,11,14,19,22], "poule_4_fencers" => [4,5,12,13,20,21] }
+      when 25
+        poule_breakdown = { number_of_poules: 4, "poule_1_fencers" => [1,8,9,16,17,24,25], "poule_2_fencers" => [2,7,10,15,18,23], "poule_3_fencers" => [3,6,11,14,19,22], "poule_4_fencers" => [4,5,12,13,20,21] }
+      when 26
+        poule_breakdown = { number_of_poules: 4, "poule_1_fencers" => [1,8,9,16,17,24,25], "poule_2_fencers" => [2,7,10,15,18,23,26], "poule_3_fencers" => [3,6,11,14,19,22], "poule_4_fencers" => [4,5,12,13,20,21] }
+      when 27
+        poule_breakdown = { number_of_poules: 4, "poule_1_fencers" => [1,8,9,16,17,24,25], "poule_2_fencers" => [2,7,10,15,18,23,26], "poule_3_fencers" => [3,6,11,14,19,22,27], "poule_4_fencers" => [4,5,12,13,20,21] }
+      when 28
+        poule_breakdown = { number_of_poules: 4, "poule_1_fencers" => [1,8,9,16,17,24,25], "poule_2_fencers" => [2,7,10,15,18,23,26], "poule_3_fencers" => [3,6,11,14,19,22,27], "poule_4_fencers" => [4,5,12,13,20,21,28] }
+      when 29
+        poule_breakdown = { number_of_poules: 5, "poule_1_fencers" => [1,10,11,20,21], "poule_2_fencers" => [2,9,12,19,22,29], "poule_3_fencers" => [3,8,13,18,23,28], "poule_4_fencers" => [4,7,14,17,24,27], "poule_5_fencers" => [5,6,15,16,25,26] }
+      when 30
+        poule_breakdown = { number_of_poules: 5, "poule_1_fencers" => [1,10,11,20,21,30], "poule_2_fencers" => [2,9,12,19,22,29], "poule_3_fencers" => [3,8,13,18,23,28], "poule_4_fencers" => [4,7,14,17,24,27], "poule_5_fencers" => [5,6,15,16,25,26] }
+      when 31
+        poule_breakdown = { number_of_poules: 5, "poule_1_fencers" => [1,10,11,20,21,30,31], "poule_2_fencers" => [2,9,12,19,22,29], "poule_3_fencers" => [3,8,13,18,23,28], "poule_4_fencers" => [4,7,14,17,24,27], "poule_5_fencers" => [5,6,15,16,25,26] }
+      when 32
+        poule_breakdown = { number_of_poules: 5, "poule_1_fencers" => [1,10,11,20,21,30,31], "poule_2_fencers" => [2,9,12,19,22,29,32], "poule_3_fencers" => [3,8,13,18,23,28], "poule_4_fencers" => [4,7,14,17,24,27], "poule_5_fencers" => [5,6,15,16,25,26] }
       else
         poule_breakdown = 0
     end
@@ -105,14 +149,18 @@ class TournamentsController < ApplicationController
                                 [4,3], [0,5], [2,4], [3,1], [4,0],
                                 [5,3], [1,2], [0,3], [4,1], [2,5]]
       when 7
-        match_breakdown = [ 21, [0,1], [2,3], [4,0], [1,2], [4,3],
-                                [0,2], [1,4], [3,0], [2,4], [3,1],
-                                [0,2], [1,4], [3,0], [2,4], [3,1],
-                                [0,2], [1,4], [3,0], [2,4], [3,1],
-                                [0,0]]
+        match_breakdown = [ 21, [0,3], [1,4], [2,5], [6,0], [4,3],
+                                [1,2], [5,6], [4,0], [3,2], [5,1],
+                                [4,6], [2,0], [3,5], [6,1], [2,4],
+                                [0,5], [1,3], [6,2], [5,4], [0,1],
+                                [3,6]]
       when 8
-        match_breakdown = [ 28, [0,1], [2,3], [4,0], [1,2], [4,3],
-                                [0,2], [1,4], [3,0], [2,4], [3,1],]
+        match_breakdown = [ 28, [1,2], [0,4], [6,3], [5,7], [0,1],
+                                [2,3], [4,5], [7,6], [3,0], [4,1],
+                                [7,2], [5,6], [3,1], [7,0], [6,5],
+                                [2,5], [1,7], [4,3], [5,0], [2,6],
+                                [3,7], [1,5], [2,4], [0,6], [3,5],
+                                [7,4], [6,1], [0,2]]
       else
         match_breakdown = 0
     end
@@ -136,126 +184,6 @@ class TournamentsController < ApplicationController
       @score2.fencer = fencers[match_info[index+1][1]]
       @score2.save
     end
-  end
-
-  # Poule of 5
-  def five_fencers(poule, fencers)
-    # fencers = Fencer.all
-    # Get the 5 fencers
-    fencer1 = fencers.first 
-    fencer2 = fencers.second 
-    fencer3 = fencers.third
-    fencer4 = fencers.fourth 
-    fencer5 = fencers.fifth
-
-    new_matches = []
-
-    # Create 10 matches
-    10.times do
-      match = Match.new(:poule => poule)
-      match.save!
-      new_matches << match
-    end
-
-    # Match 1
-    @scorem1a = Score.new(points: 0)
-    @scorem1b = Score.new(points: 0)
-    @scorem1a.match = new_matches[0]
-    @scorem1a.fencer = fencer1
-    @scorem1b.match = new_matches[0]
-    @scorem1b.fencer = fencer2
-    @scorem1a.save
-    @scorem1b.save
-    
-    # Match 2
-    @scorem2a = Score.new(points: 0)
-    @scorem2b = Score.new(points: 0)
-    @scorem2a.match = new_matches[1]
-    @scorem2a.fencer = fencer3
-    @scorem2b.match = new_matches[1]
-    @scorem2b.fencer = fencer4
-    @scorem2a.save
-    @scorem2b.save
-
-    # Match 3
-    @scorem3a = Score.new(points: 0)
-    @scorem3b = Score.new(points: 0)
-    @scorem3a.match = new_matches[2]
-    @scorem3a.fencer = fencer5
-    @scorem3b.match = new_matches[2]
-    @scorem3b.fencer = fencer1
-    @scorem3a.save
-    @scorem3b.save
-
-    # Match 4
-    @scorem3a = Score.new(points: 0)
-    @scorem3b = Score.new(points: 0)
-    @scorem3a.match = new_matches[3]
-    @scorem3a.fencer = fencer2
-    @scorem3b.match = new_matches[3]
-    @scorem3b.fencer = fencer3
-    @scorem3a.save
-    @scorem3b.save
-
-    # Match 5
-    @scorem4a = Score.new(points: 0)
-    @scorem4b = Score.new(points: 0)
-    @scorem4a.match = new_matches[4]
-    @scorem4a.fencer = fencer5
-    @scorem4b.match = new_matches[4]
-    @scorem4b.fencer = fencer4
-    @scorem4a.save
-    @scorem4b.save    
-
-    # Match 6
-    @scorem5a = Score.new(points: 0)
-    @scorem5b = Score.new(points: 0)
-    @scorem5a.match = new_matches[5]
-    @scorem5a.fencer = fencer1
-    @scorem5b.match = new_matches[5]
-    @scorem5b.fencer = fencer3
-    @scorem5a.save
-    @scorem5b.save
-    
-    # Match 7
-    @scorem6a = Score.new(points: 0)
-    @scorem6b = Score.new(points: 0)
-    @scorem6a.match = new_matches[6]
-    @scorem6a.fencer = fencer2
-    @scorem6b.match = new_matches[6]
-    @scorem6b.fencer = fencer5
-    @scorem6a.save
-    @scorem6b.save
-
-    # Match 8
-    @scorem7a = Score.new(points: 0)
-    @scorem7b = Score.new(points: 0)
-    @scorem7a.match = new_matches[7]
-    @scorem7a.fencer = fencer4
-    @scorem7b.match = new_matches[7]
-    @scorem7b.fencer = fencer1
-    @scorem7a.save
-    @scorem7b.save
-
-    # Match 9
-    @scorem8a = Score.new(points: 0)
-    @scorem8b = Score.new(points: 0)
-    @scorem8a.match = new_matches[8]
-    @scorem8a.fencer = fencer3
-    @scorem8b.match = new_matches[8]
-    @scorem8b.fencer = fencer5
-    @scorem8a.save
-    @scorem8b.save
-
-    # Match 10
-    @scorem9a = Score.new(points: 0)
-    @scorem9b = Score.new(points: 0)
-    @scorem9a.match = new_matches[9]
-    @scorem9a.fencer = fencer4
-    @scorem9b.match = new_matches[9]
-    @scorem9b.fencer = fencer2
-    @scorem9a.save
-    @scorem9b.save 
   end
 
   # DELETE /tournaments/1
