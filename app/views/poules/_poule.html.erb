@@ -1,76 +1,67 @@
 <div id="<%= dom_id poule %>">
-
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Fencers</th>
-      <% @poule_fencers.each do |fencer, index| %>
-        <td scope="col"> <%= fencer.name %> </td>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody>
-      <% @poule_table_rows.each_with_index do |row, index| %>
-        <tr>
-          <td scope="row"><%= @poule_fencers[index].name %></td>
-            <% row.each do |score|%>
-              <% if score == "X" %>
-                <td class="table-dark">  </td>
-              <% else%>
-                <td> <%= score %> </td>
-              <% end %>
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col">
+      <table class="table table-bordered fs-6">
+        <thead>
+          <tr>
+          <th scope="col">Fencers</th>
+            <% @poule_fencers.each do |fencer, index| %>
+              <td scope="col fs-6"> <%= fencer.name %> </td>
             <% end %>
-        </tr>
-      <% end %>
-
-  </tbody>
-</table>
-
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Fencers</th>
-      <% poule.fencers.uniq.each do |fencer, index| %>
-        <td scope="col"> <%= fencer.name %> </td>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody>
-      <% poule.fencers.uniq.each_with_index do |fencer, index| %>
-        <% fencer_matches = [] %>
-        <% poule.matches.each do |match| %>
-          <% if match.fencers[0] == fencer || match.fencers[1] == fencer %>
-            <% fencer_matches << match %>
-          <% end %>
-        <% end %>
-        <% fencer_matches.insert(index, index) %>
-        <tr>
-          <td scope="row"><%= fencer.name %></td>
-          <% fencer_matches.each_with_index do |match, ind| %>
-            <% if match == ind %>
-              <td class="table-dark">  </td>
-            <% elsif match != nil %>
-              <td>
-                <% fencer_matches.each_with_index do |ma, x| %>
-                  <% if ma == x %>
-                  <% elsif ma != nil %>
-                    <% if ma.fencers[0].name == poule.fencers.uniq[ind].name || ma.fencers[1].name == poule.fencers.uniq[ind].name %>
-                        <% if ma.scores.first.fencer.name == fencer.name %>
-                          <%=  ma.scores.first.points %>
-                        <% elsif ma.scores.last.fencer.name == fencer.name %>
-                          <%=  ma.scores.last.points %>
-                        <% end %>
+          </tr>
+        </thead>
+        <tbody>
+            <% @poule_table_rows.each_with_index do |row, index| %>
+              <tr>
+                <td scope="row fs-6"><%= @poule_fencers[index].name %></td>
+                  <% row.each do |score|%>
+                    <% if score == "X" %>
+                      <td class="table-dark">  </td>
+                    <% else%>
+                      <% if score[0] == "V" %>
+                        <td class="table-success"> <%= score %> </td>
+                      <% elsif score[0] == "D" %>  
+                        <td class="table-danger"> <%= score %> </td>
+                      <% else %>
+                        <td> <%= score %> </td>
+                      <% end %>
                     <% end %>
                   <% end %>
-                <% end %>
-              </td>
+              </tr>
             <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <table class="table table-bordered fs-6">
+        <thead>
+          <tr>
+            <th scope="col">Fencers</th>
+            <td scope="col fs-6"> Victories </td>
+            <td scope="col fs-6"> Touches For </td>
+            <td scope="col fs-6"> Touches Against </td>
+            <td scope="col fs-6"> Indicator </td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @poule_fencers.each do |fencer| %>
+            <tr>
+              <td scope="row fs-6"><%= fencer.name %></td>
+              <td scope="row fs-6"><%= @fencer_victories["#{fencer.name}"] %></td>
+              <td scope="row fs-6"><%= @fencer_victories["#{fencer.name}_points_for"] %></td>
+              <td scope="row fs-6"><%= @fencer_victories["#{fencer.name}_points_against"] %></td>
+              <td scope="row fs-6"><%= @fencer_victories["#{fencer.name}_indicator"] %></td>
+            </tr>
           <% end %>
-        </tr>
-      <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-  </tbody>
-</table>
+
+
 
 <% poule.matches.each_with_index do |match, index| %>
 <div class="card">
@@ -80,7 +71,7 @@
   <% fencer2 =match.fencers.second.name %> 
   <% fencer2_score = match.scores.where(fencer_id: match.fencers.second)[0].points %>
   <%= fencer1 %>: <%= fencer1_score %> - <%= fencer2 %>: <%= fencer2_score %>
-  <%= link_to "Update Scores", edit_match_path(match) %>
+  <%= link_to "Update Scores", edit_match_path(match, @poule) %>
 </div>
 <% end  %>
 </div>

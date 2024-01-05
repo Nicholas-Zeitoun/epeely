@@ -56,7 +56,8 @@ class MatchesController < ApplicationController
     @score2.points = update_params[:score_2].to_i
     @score2.save
     if match_params
-      redirect_to @match, notice: "Match was successfully updated.", status: :see_other
+      # redirect_to @match, notice: "Match was successfully updated.", status: :see_other
+      redirect_to @match.poule, notice: "Match was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -72,6 +73,11 @@ class MatchesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_match
       @match = Match.find(params[:id])
+    end
+
+    def set_edit
+      @match = Match.find(params[:id])
+      @poule = Poule.find(params[:format])
     end
 
     def set_update

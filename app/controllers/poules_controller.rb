@@ -8,17 +8,11 @@ class PoulesController < ApplicationController
 
   # GET /poules/1
   def show
+    # Details for the poule table
     @poule_fencers = @poule.fencers.order(:fencer_id).uniq
     @poule_table_rows = []
     @poule_fencers.each_with_index do |fencer, index|
-      @fencer_scores = {}
-      @poule.matches.each do |match|
-        if match.fencers.first == fencer
-          @fencer_scores["#{match.fencers.second.name}"] = match.scores.where(fencer_id: fencer)[0].points
-        elsif match.fencers.last == fencer 
-          @fencer_scores["#{match.fencers.first.name}"] = match.scores.where(fencer_id: fencer)[0].points
-        end
-      end
+      @fencer_scores = get_fencer_scores(fencer)
       @ordered_scores = []
       @poule_fencers.each do |ordering_fencer|
         if ordering_fencer.name == fencer.name
@@ -29,6 +23,83 @@ class PoulesController < ApplicationController
       end   
       @poule_table_rows << @ordered_scores 
     end
+    # Details for the fencers scores
+    @fencer_victories = {}
+    @poule_fencers.each do |fencer|
+      @fencer_victories["#{fencer.name}"] = matches_won(@poule, fencer)
+      @fencer_victories["#{fencer.name}_points_for"] = points_for(@poule, fencer)
+      @fencer_victories["#{fencer.name}_points_against"] = points_against(@poule, fencer)
+      @fencer_victories["#{fencer.name}_indicator"] = fencer_indicator(points_for(@poule, fencer), points_against(@poule, fencer))
+    end
+  end
+
+  def get_fencer_scores(fencer)
+    @fencer_scores = {}
+    @poule.matches.each do |match|
+      if match.fencers.first == fencer
+        vd = victory?(match.scores.where(fencer_id: fencer)[0].points, match.scores.where.not(fencer_id: fencer)[0].points)
+        @fencer_scores["#{match.fencers.second.name}"] = "#{vd}#{match.scores.where(fencer_id: fencer)[0].points}"
+      elsif match.fencers.last == fencer 
+        vd = victory?(match.scores.where(fencer_id: fencer)[0].points, match.scores.where.not(fencer_id: fencer)[0].points)
+        @fencer_scores["#{match.fencers.first.name}"] = "#{vd}#{match.scores.where(fencer_id: fencer)[0].points}"
+      end
+    end
+    @fencer_scores
+  end
+
+  def victory?(score_1, score_2)
+    victory_indicator = ""
+    if score_1 > score_2
+      victory_indicator = "V"
+    elsif score_2 > score_1
+      victory_indicator = "D"
+    else
+      victory_indicator = ""
+    end
+    victory_indicator
+  end
+
+  def matches_won(poule, fencer)
+    matches_won = 0
+    poule.matches.each do |match|
+      if match.fencers.first == fencer || match.fencers.last == fencer
+        fencer_score = match.scores.where(fencer_id: fencer)[0].points
+        opponent_score = match.scores.where.not(fencer_id: fencer)[0].points
+        if fencer_score > opponent_score
+          matches_won += 1
+        end
+      end
+    end
+    matches_won
+  end
+
+  def points_for(poule, fencer)
+    points_for = 0
+    poule.matches.each do |match|
+      if match.fencers.first == fencer || match.fencers.last == fencer
+        if match.scores.where(fencer_id: fencer)[0].points != nil
+          points_for += match.scores.where(fencer_id: fencer)[0].points
+        end
+      end
+    end
+    points_for
+  end
+
+  def points_against(poule, fencer)
+    points_against = 0
+    poule.matches.each do |match|
+      if match.fencers.first == fencer || match.fencers.last == fencer
+        if match.scores.where.not(fencer_id: fencer)[0].points != nil
+          points_against += match.scores.where.not(fencer_id: fencer)[0].points
+        end
+      end
+    end
+    points_against
+  end
+
+  def fencer_indicator(points_for, points_against)
+    indicator = (points_for - points_against)
+    indicator
   end
 
   # GET /poules/new

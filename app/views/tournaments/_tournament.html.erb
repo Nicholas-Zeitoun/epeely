@@ -1,11 +1,9 @@
 <div id="<%= dom_id tournament %>">
-<p>Participants</p>
-<% tournament.fencers.each do | fencer | %>
-    <p><%= fencer.name %></p>
-<% end %>
-<% tournament.poules.each do | poule | %>
-    <% poule.fencers.each do | fencer | %>
-        <%= fencer.name %>
+<% tournament.poules.each_with_index do | poule, index | %>
+    <h5>Poule <%= index+1 %> </h5>
+    <% poule.fencers.uniq.each do | fencer | %>
+        <p><%= fencer.name %></p>
     <% end %>
+    <%= link_to "Show this poule", poule %>
 <% end %>
 </div>

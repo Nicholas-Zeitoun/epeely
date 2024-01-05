@@ -5,6 +5,7 @@
 <div>
   <%= link_to "Edit this poule", edit_poule_path(@poule) %> |
   <%= link_to "Back to poules", poules_path %>
+  <%= link_to "Back to tournament", tournament_path(@poule.tournament) %>
 
   <%= button_to "Destroy this poule", @poule, method: :delete %>
 </div>
