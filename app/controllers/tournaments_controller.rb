@@ -9,6 +9,79 @@ class TournamentsController < ApplicationController
 
   # GET /tournaments/1
   def show
+    @ranked_order = {}
+    @indicator_order = {}
+    @result_order = []
+    @tournament.poules.each do |poule|
+      poule.fencers.uniq.each do |fencer|
+        @ranked_order["#{fencer.name}"] = fencer.points
+        # Get the indicator order
+        detail = matches_detail(poule, fencer)
+        p_for = points_for(poule, fencer) 
+        p_against = points_against(poule, fencer) 
+        indicator = fencer_indicator(p_for, p_against)
+        detail << indicator
+        @indicator_order["#{fencer.name}"] = detail
+        ranker = indicator + detail[2]
+        @result_order << [fencer.name, detail, ranker]
+      end
+    end
+    @result_order = @result_order.sort_by(&:last).reverse
+    @ranked_order = @ranked_order.sort_by(&:last).reverse
+    @indicator_order = @indicator_order.sort_by(&:last).reverse
+  end
+
+  def matches_detail(poule, fencer)
+    matches_won = 0
+    matches_lost = 0
+    poule.matches.each do |match|
+      if match.fencers.first == fencer || match.fencers.last == fencer
+        fencer_score = match.scores.where(fencer_id: fencer)[0].points
+        opponent_score = match.scores.where.not(fencer_id: fencer)[0].points
+        if fencer_score > opponent_score
+          matches_won += 1
+        elsif fencer_score < opponent_score
+          matches_lost += 1
+        else
+          matches_won 
+          matches_lost 
+        end
+      end
+    end
+    matches_ratio = matches_won.to_f/(matches_won + matches_lost).to_f
+    if matches_ratio.nan?
+      matches_ratio = 0
+    end
+    return [matches_won, matches_lost, matches_ratio]
+  end
+
+  def points_for(poule, fencer)
+    points_for = 0
+    poule.matches.each do |match|
+      if match.fencers.first == fencer || match.fencers.last == fencer
+        if match.scores.where(fencer_id: fencer)[0].points != nil
+          points_for += match.scores.where(fencer_id: fencer)[0].points
+        end
+      end
+    end
+    points_for
+  end
+
+  def points_against(poule, fencer)
+    points_against = 0
+    poule.matches.each do |match|
+      if match.fencers.first == fencer || match.fencers.last == fencer
+        if match.scores.where.not(fencer_id: fencer)[0].points != nil
+          points_against += match.scores.where.not(fencer_id: fencer)[0].points
+        end
+      end
+    end
+    points_against
+  end
+
+  def fencer_indicator(points_for, points_against)
+    indicator = (points_for - points_against)
+    indicator
   end
 
   # GET /tournaments/new
