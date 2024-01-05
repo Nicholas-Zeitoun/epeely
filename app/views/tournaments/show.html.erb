@@ -12,15 +12,35 @@
 </nav>
 <div class="tab-content" id="nav-tabContent">
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-
+    <div class="container pt-4">
       <ol class="list-group list-group-numbered">
-    <% @ranked_order.each do | fencer_details | %>
-          <li class="list-group-item"><%= fencer_details[0] %> <%= fencer_details[1] %></li>
-    <% end %>
+        <% @ranked_order.each_with_index do | fencer_details, index | %>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold"><%= fencer_details[0] %></div>
+            </div>
+            <span class="badge bg-secondary rounded-pill"><%= fencer_details[1] %></span>
+          </li>
+        <% end %>
       </ol>
+    </div>
   </div>
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-     <%= render @tournament %>
+    <div class="container pt-4">
+      <div class="row">
+        <% @tournament.poules.each_with_index do | poule, index | %>
+            <div class="card border-secondary mb-3 p-0" style="max-width: 18rem;">
+              <div class="card-header">Poule <%= index+1 %> </div>
+              <div class="card-body">
+                <% poule.fencers.uniq.each do | fencer | %>
+                  <p class="card-text"><%= fencer.name %></p>
+                <% end %>
+                <%= link_to "Go to Poule", poule, class: "btn btn-dark" %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
     <%= render partial: "rankings", locals: { tournament: @tournament } %>
@@ -29,8 +49,7 @@
 
 </div>
 <div class="container p-4">
-  <%= link_to "Edit this tournament", edit_tournament_path(@tournament) %> |
-  <%= link_to "Back to tournaments", tournaments_path %>
-
-  <%= button_to "Destroy this tournament", @tournament, method: :delete, class: "btn btn-primary"%>
+  <%= link_to "Select Fencers", edit_tournament_path(@tournament), class: "btn btn-dark m-2" %>
+  <%= link_to "Back to tournaments", tournaments_path, class: "btn btn-secondary m-2" %>
+  <%= button_to "Delete tournament", @tournament, method: :delete, class: "btn btn-danger m-2"%>
 </div>

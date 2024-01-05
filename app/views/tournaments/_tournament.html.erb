@@ -1,13 +1,16 @@
-<div class="container">
-  <div class="d-grid pt-4">
-    <% tournament.poules.each_with_index do | poule, index | %>
-        <div class="card pt-2 p-2 bg-light border">
-                <h5>Poule <%= index+1 %> </h5>
-                <% poule.fencers.uniq.each do | fencer | %>
-                <p><%= fencer.name %></p>
+
+
+<div class="container p-4">
+  <div class="card bg-light p-4">
+    <h5 class="card-title"><%= tournament.created_at.to_fs(:long) %></h5>
+    <% fencers = []%>
+    <% tournament.poules.each do |poule|%>
+        <% poule.fencers.uniq.each do |fencer| %>
+            <% fencers << fencer %>
         <% end %>
-        <%= link_to "Show this poule", poule %>
-        </div>
     <% end %>
+    <p><%= fencers.count %> Fencers</p>
+    <p><%= tournament.poules.count %> Poule(s)</p>
+    <%= link_to "Show this tournament", tournament, class: "btn btn-dark m-2" %>
   </div>
 </div>
