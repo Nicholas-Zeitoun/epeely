@@ -1,9 +1,15 @@
-<h1>New tournament</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">🤺 Epeely </a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a><%= link_to "⬅️ Back to tournaments", tournaments_path, class: "nav-link active" %></a>
+        </li>
+      </ul>
+  </div>
+</nav>
 
-<%= render "form", tournament: @tournament %>
-
-<br>
-
-<div>
-  <%= link_to "Back to tournaments", tournaments_path %>
+<div class="container p-3 text-center">
+  <h1>⚔️ New tournament ⚔️</h1>
+  <%= render "form", tournament: @tournament %>
 </div>

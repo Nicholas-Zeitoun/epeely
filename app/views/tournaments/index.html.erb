@@ -19,12 +19,14 @@
 
 <p style="color: green"><%= notice %></p>
 
-<h1>Tournaments</h1>
+<div class="container p-3">
+  <h1>Tournaments</h1>
 
-<div id="tournaments">
-  <% @tournaments.each do |tournament| %>
-    <%= render tournament %>
-  <% end %>
+  <div id="tournaments">
+    <% @tournaments.each do |tournament| %>
+      <%= render tournament %>
+    <% end %>
+  </div>
+
+  <%= link_to "New tournament", new_tournament_path, class: "btn btn-success m-2" %>
 </div>
-
-<%= link_to "New tournament", new_tournament_path, class: "btn btn-success m-2" %>

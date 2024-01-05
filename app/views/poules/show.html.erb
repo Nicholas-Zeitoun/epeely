@@ -1,11 +1,73 @@
-<p style="color: green"><%= notice %></p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">🤺 Epeely </a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a><%= link_to "⬅️ Back to tournament", tournament_path(@poule.tournament), class: "nav-link active" %></a>
+        </li>
+      </ul>
+  </div>
+</nav>
 
-<%= render @poule %>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<div>
-  <%= link_to "Edit this poule", edit_poule_path(@poule) %> |
-  <%= link_to "Back to poules", poules_path %>
-  <%= link_to "Back to tournament", tournament_path(@poule.tournament) %>
-
-  <%= button_to "Destroy this poule", @poule, method: :delete %>
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Details</button>
+      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Matches</button>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <div class="container pt-4">
+        <%= render @poule %>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <div class="container pt-4">
+          <% @poule.matches.each_with_index do |match, index| %>
+            <% if match.scores.first.points !=0 || match.scores.second.points !=0 %>
+              <div class="card border-success mb-3">
+              <div class="card-header text-success">
+                Match <%= index + 1 %> - ✅ Complete!
+              </div>
+            <% else %>
+              <div class="card mb-3">
+              <div class="card-header">
+                Match <%= index + 1 %>
+              </div>  
+            <% end  %>
+              <div class="card-body">
+                <% fencer1 = match.fencers.first.name %> 
+                <% fencer1_score = match.scores.where(fencer_id: match.fencers.first)[0].points %>
+                <% fencer2 =match.fencers.second.name %> 
+                <% fencer2_score = match.scores.where(fencer_id: match.fencers.second)[0].points %>
+                <div class="row">
+                  <div class="col-5 text-center">
+                    <% if match.fencers.first.photo.attached? %>
+                      <%= cl_image_tag match.fencers.first.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-circle" %>
+                    <% end %>
+                    <p><%= fencer1 %>: <%= fencer1_score %></p>
+                  </div>
+                  <div class="col-2 text-center">
+                    vs
+                  </div>
+                  <div class="col-5 text-center">
+                    <% if match.fencers.second.photo.attached? %>
+                      <%= cl_image_tag match.fencers.second.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-circle" %>
+                    <% end %>
+                    <p><%= fencer2 %>: <%= fencer2_score %></p>
+                  </div>
+                </div>
+                <%= link_to "Update Scores", edit_match_path(match, @poule), class: "btn btn-dark" %>
+              </div>
+            </div>
+          <% end  %>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+

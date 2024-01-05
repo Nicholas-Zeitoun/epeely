@@ -1,16 +1,16 @@
 
+<div class="card border-secondary p-3">
 <%= simple_form_for(@match) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= @match.fencers.order(:fencer_id).first.name %>
-    <%= f.input :score_1, :input_html => { :value => @match.scores.where(fencer_id: @match.fencers.first)[0].points }, :label => 'Points' %>
-    <%= @match.fencers.order(:fencer_id).last.name %>
-    <%= f.input :score_2, :input_html => { :value => @match.scores.where(fencer_id: @match.fencers.second)[0].points }, :label => 'Points' %>
+    <%= f.input :score_1, :input_html => { :value => @match.scores.where(fencer_id: @match.fencers.first)[0].points }, :label => @match.fencers.order(:fencer_id).first.name %>
+    <%= f.input :score_2, :input_html => { :value => @match.scores.where(fencer_id: @match.fencers.second)[0].points }, :label => @match.fencers.order(:fencer_id).last.name %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn-dark" %>
   </div>
 <% end %>
+</div>

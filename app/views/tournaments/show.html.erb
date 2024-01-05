@@ -1,3 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">🤺 Epeely </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a><%= link_to "⬅️ Back to tournaments", tournaments_path, class: "nav-link active" %></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <div class="container">
   <p style="color: green"><%= notice %></p>
 
@@ -29,11 +45,16 @@
     <div class="container pt-4">
       <div class="row">
         <% @tournament.poules.each_with_index do | poule, index | %>
-            <div class="card border-secondary mb-3 p-0" style="max-width: 18rem;">
+            <div class="card border-secondary m-3 p-0" style="max-width: 18rem;">
               <div class="card-header">Poule <%= index+1 %> </div>
               <div class="card-body">
                 <% poule.fencers.uniq.each do | fencer | %>
-                  <p class="card-text"><%= fencer.name %></p>
+                  <div class="card-text m-3">
+                    <% if fencer.photo.attached? %>
+                      <%= cl_image_tag fencer.photo.key, height: 30, width: 30, crop: :fill, class: "rounded-circle" %>
+                    <% end %>
+                    <%= fencer.name %>
+                  </div>
                 <% end %>
                 <%= link_to "Go to Poule", poule, class: "btn btn-dark" %>
               </div>
@@ -50,6 +71,5 @@
 </div>
 <div class="container p-4">
   <%= link_to "Select Fencers", edit_tournament_path(@tournament), class: "btn btn-dark m-2" %>
-  <%= link_to "Back to tournaments", tournaments_path, class: "btn btn-secondary m-2" %>
   <%= button_to "Delete tournament", @tournament, method: :delete, class: "btn btn-danger m-2"%>
 </div>

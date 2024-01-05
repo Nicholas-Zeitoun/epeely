@@ -1,23 +1,27 @@
-<h1>Editing tournament</h1>
-
-<%= simple_form_for(@tournament) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs p-2">
-    <div class="card">
-      <%= f.association :fencers, collection: @fencers, as: :check_boxes, include_blank: false, checked: [@fencers.first], label: false %>
-    </div>  
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">🤺 Epeely </a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a><%= link_to "⬅️ Back to tournament", tournament_path(@tournament), class: "nav-link active" %></a>
+        </li>
+      </ul>
   </div>
+</nav>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+<div class="container p-3">
+  <h1>Editing tournament</h1>
 
-<br>
+  <%= simple_form_for(@tournament) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<div>
-  <%= link_to "Show this tournament", @tournament %> |
-  <%= link_to "Back to tournaments", tournaments_path %>
+    <div class="form-inputs p-2">
+        <%= f.association :fencers, collection: @fencers, as: :check_boxes, include_blank: false, checked: [@fencers.first], label: "Select Fencers..." %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, class: "btn-dark" %>
+    </div>
+  <% end %>
 </div>

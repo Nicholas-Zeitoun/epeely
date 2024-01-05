@@ -1,10 +1,15 @@
-<h1>Editing match</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">🤺 Epeely </a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a><%= link_to "⬅️ Back to poule", poule_path(@match.poule), class: "nav-link active" %></a>
+        </li>
+      </ul>
+  </div>
+</nav>
 
-<%= render "form", match: @match %>
-
-<br>
-
-<div>
-  <%= link_to "Show this match", @match %> |
-  <%= link_to "Back to matches", matches_path %>
+<div class="container">
+  <h1>Input Scores</h1>
+  <%= render "form", match: @match %>
 </div>
