@@ -8,6 +8,27 @@ class PoulesController < ApplicationController
 
   # GET /poules/1
   def show
+    @poule_fencers = @poule.fencers.order(:fencer_id).uniq
+    @poule_table_rows = []
+    @poule_fencers.each_with_index do |fencer, index|
+      @fencer_scores = {}
+      @poule.matches.each do |match|
+        if match.fencers.first == fencer
+          @fencer_scores["#{match.fencers.second.name}"] = match.scores.where(fencer_id: fencer)[0].points
+        elsif match.fencers.last == fencer 
+          @fencer_scores["#{match.fencers.first.name}"] = match.scores.where(fencer_id: fencer)[0].points
+        end
+      end
+      @ordered_scores = []
+      @poule_fencers.each do |ordering_fencer|
+        if ordering_fencer.name == fencer.name
+          @ordered_scores << "X"
+        else
+          @ordered_scores << @fencer_scores["#{ordering_fencer.name}"]
+        end
+      end   
+      @poule_table_rows << @ordered_scores 
+    end
   end
 
   # GET /poules/new

@@ -49,10 +49,10 @@ class MatchesController < ApplicationController
 
   # PATCH/PUT /matches/1
   def update
-    @score1 = @match.scores.first
+    @score1 = @match.scores.order(:fencer_id).first
     @score1.points = update_params[:score_1].to_i
     @score1.save
-    @score2 = @match.scores.second
+    @score2 = @match.scores.order(:fencer_id).last
     @score2.points = update_params[:score_2].to_i
     @score2.save
     if match_params
