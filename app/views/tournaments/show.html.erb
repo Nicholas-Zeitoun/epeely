@@ -48,6 +48,9 @@
             <div class="card border-secondary m-3 p-0" style="max-width: 18rem;">
               <div class="card-header">Poule <%= index+1 %> </div>
               <div class="card-body">
+                <img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" 
+                     src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=<%=full_url_for(poule)%>">
+                <hr>
                 <% poule.fencers.uniq.each do | fencer | %>
                   <div class="card-text m-3">
                     <% if fencer.photo.attached? %>
