@@ -4,9 +4,9 @@ class FencersController < ApplicationController
   # GET /fencers
   def index
     @fencers = Fencer.all.order(points: :desc)
-    @first_place = Fencer.first
-    @second_place = Fencer.second
-    @third_place = Fencer.third
+    @first_place = Fencer.all.order(points: :desc).first
+    @second_place = Fencer.all.order(points: :desc).second
+    @third_place = Fencer.all.order(points: :desc).third
   end
 
   # GET /fencers/1
