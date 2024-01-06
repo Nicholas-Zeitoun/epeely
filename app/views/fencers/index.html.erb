@@ -20,16 +20,27 @@
 <p style="color: green"><%= notice %></p>
 
 <div class="container p-4">
-  <h1>Fencers</h1>
-
-  <div id="fencers">
-    <% @fencers.each do |fencer| %>
-      <%= render fencer %>
-      <p>
-        <%= link_to "Show this fencer", fencer %>
-      </p>
+  <div class="row">
+      <div class="col">
+        <h1>Fencers</h1>
+      </div>
+      <div class="col d-flex align-items-end flex-column">
+        <%= link_to "Add Fencer", new_fencer_path, class: "btn btn-success m-2" %>
+      </div>
+  </div>
+   
+  <div class="row">
+    <% @fencers.each_with_index do |fencer, index| %>
+      <div class="col-sm-3 mb-2">
+        <div class="card" style="width: 18rem;">  
+          <%= render partial: fencer, locals: { index: index } %>
+        <div class="card-body">
+          <%= link_to "View", fencer, class: "btn btn-dark" %>
+          <%= link_to "Edit", edit_fencer_path(fencer), class: "btn btn-dark" %>
+        </div>
+        </div>
+      </div>
     <% end %>
   </div>
 
-  <%= link_to "Add Fencer", new_fencer_path, class: "btn btn-dark m-2" %>
 </div>

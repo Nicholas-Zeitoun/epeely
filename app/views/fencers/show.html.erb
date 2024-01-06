@@ -1,14 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">🤺 Epeely </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a><%= link_to "Tournaments", tournaments_path, class: "nav-link active" %></a>
+        </li>
+        <li class="nav-item">
+          <a><%= link_to "Fencers", fencers_path, class: "nav-link active" %></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
 <p style="color: green"><%= notice %></p>
 
-<% if @fencer.photo.attached? %>
-  <%= cl_image_tag @fencer.photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
-
-<%= render @fencer %>
-
-<div>
-  <%= link_to "Edit this fencer", edit_fencer_path(@fencer) %> |
-  <%= link_to "Back to fencers", fencers_path %>
-
-  <%= button_to "Destroy this fencer", @fencer, method: :delete %>
+<div class="container">
+  <%= link_to "⬅️ Back to fencers", fencers_path, class: "nav-link active mb-3" %>
+  <div class="card bg-light">
+    <div class="card-header"><%= @fencer.name %></div>
+    <div class="card-body text-center">
+    <% if @fencer.photo.attached? %>
+      <%= cl_image_tag @fencer.photo.key, height: 200, width: 200, crop: :fill, class: "rounded-circle" %>
+    <% end %>
+    <p class="card-text mt-2">Points: <%= @fencer.points %></p>
+    <hr>
+    <p class="card-subtitle mb-2 text-muted">Tournaments: <%= @tournaments %></p>
+    <p class="card-subtitle mb-2 text-muted">Matches: <%= @matches %></p>
+    <p class="card-subtitle mb-2 text-muted">Touches Scored: <%= @points_scored %></p>
+  </div>
+  </div>
+  <%= link_to "Edit this fencer", edit_fencer_path(@fencer), class: "btn btn-dark m-2" %>
+  <%= button_to "Destroy this fencer", @fencer, method: :delete, class: "btn btn-danger m-2" %>
 </div>

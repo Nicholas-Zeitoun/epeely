@@ -3,11 +3,20 @@ class FencersController < ApplicationController
 
   # GET /fencers
   def index
-    @fencers = Fencer.all
+    @fencers = Fencer.all.order(points: :desc)
+    @first_place = Fencer.first
+    @second_place = Fencer.second
+    @third_place = Fencer.third
   end
 
   # GET /fencers/1
   def show
+    @tournaments = @fencer.tournaments.count
+    @matches = @fencer.matches.count
+    @points_scored = 0
+    @fencer.scores.each do |score|
+      @points_scored += score.points
+    end
   end
 
   # GET /fencers/new

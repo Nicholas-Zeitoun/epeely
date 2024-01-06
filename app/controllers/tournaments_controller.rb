@@ -4,7 +4,7 @@ class TournamentsController < ApplicationController
 
   # GET /tournaments
   def index
-    @tournaments = Tournament.all
+    @tournaments = Tournament.all.order(created_at: :desc)
   end
 
   # GET /tournaments/1

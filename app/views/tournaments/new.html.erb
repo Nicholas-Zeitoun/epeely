@@ -1,15 +1,27 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">🤺 Epeely </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a><%= link_to "⬅️ Back to tournaments", tournaments_path, class: "nav-link active" %></a>
+          <a><%= link_to "Tournaments", tournaments_path, class: "nav-link active" %></a>
+        </li>
+        <li class="nav-item">
+          <a><%= link_to "Fencers", fencers_path, class: "nav-link active" %></a>
         </li>
       </ul>
+    </div>
   </div>
 </nav>
 
-<div class="container p-3 text-center">
-  <h1>⚔️ New tournament ⚔️</h1>
-  <%= render "form", tournament: @tournament %>
+
+<div class="container p-3">
+  <%= link_to "⬅️ Back to tournaments", tournaments_path, class: "nav-link active mb-3" %>
+  <div class="text-center">
+    <h1>⚔️ New tournament ⚔️</h1>
+    <%= render "form", tournament: @tournament %>
+  </div>
 </div>

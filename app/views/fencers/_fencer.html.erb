@@ -1,12 +1,15 @@
-<div id="<%= dom_id fencer %>">
-  <p>
-    <strong>Name:</strong>
-    <%= fencer.name %>
-  </p>
 
-  <p>
-    <strong>Points:</strong>
-    <%= fencer.points %>
-  </p>
-
-</div>
+  <div class="card-header text-center"><%= index + 1 %>. <%= fencer.name %></div>
+  <div class="card-body text-center">
+    <% if fencer.photo.attached? %>
+      <%= cl_image_tag fencer.photo.key, height: 100, width: 100, crop: :fill, class: "rounded-circle" %>
+    <% end %>
+    <p class="card-text mt-2">Points: <%= fencer.points %></p>
+    <% if fencer == @first_place %>
+      🥇
+    <% elsif fencer == @second_place %>
+      🥈
+    <% elsif fencer == @third_place %>
+      🥉
+    <% end %>
+  </div>
