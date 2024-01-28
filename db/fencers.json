@@ -2,195 +2,201 @@
     "fencers": [
         {
             "name": "Darcy Mccelland",
-            "points": 549.8,
+            "points": 3300,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/M/MCCLELLAND_darcy_2468.jpg",
             "image_name": "darcy-mccelland.png"
         },
         {
             "name": "Nicholas Zeitoun",
-            "points": 510,
+            "points": 3400,
             "file_url": "https://res.cloudinary.com/dnfz8nhuf/image/upload/v1703807224/s0vgzb0cndbpd2knh2v3.jpg",
             "image_name": "nicholas-zeitoun.png"
         },
         {
             "name": "Eason Wen",
-            "points": 472.5,
+            "points": 2600,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/W/WEN_yiwei%20eason_1647.jpg",
             "image_name": "wen-eason.png"
         },
         {
             "name": "Domenic Yates",
-            "points": 447,
+            "points": 3500,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/Y/YATES_domenic_1131.jpg",
             "image_name": "domenic-yates.png"
         },
         {
             "name": "Alister Hill",
-            "points": 440,
+            "points": 2200,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/H/HILL_alister_2629.jpg",
             "image_name": "alister-hill.png"
         },
         {
             "name": "Simon Summerfield",
-            "points": 433,
+            "points": 2400,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/S/SUMMERFIELD_simon_270.jpg",
             "image_name": "summerfield-simon.png"
         },
         {
             "name": "Alexander English",
-            "points": 428,
+            "points": 3800,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/E/ENGLISH_alexander_1116.jpg",
             "image_name": "alexander-english.png"
         },
         {
             "name": "Evelyn Halls",
-            "points": 373.1,
+            "points": 2700,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/H/HALLS_evelyn_85.jpg",
             "image_name": "evelyn-halls.png" 
         },
         {
             "name": "Jacob Ohrt",
-            "points": 357,
+            "points": 2900,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/O/OHRT_jacob_1635.jpg",
             "image_name": "ohrt-jacob.png"
         },
         {
             "name": "Dianna Gu",
-            "points": 320,
+            "points": 1500,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/G/GU_dianna_310.jpg",
             "image_name": "dianna-gu.png" 
         },
         {
             "name": "Sara Hardwick",
-            "points": 296,
+            "points": 1000,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/H/HARDWICK_sarah_2135.jpg",
             "image_name": "sara-hardwick.png"
         },
         {
             "name": "Peter Osvath",
-            "points": 289,
+            "points": 2100,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/O/OSVATH_peter_176.jpg",
             "image_name": "peter-osvath.png"
         },
         {
             "name": "Annie Devereaux",
-            "points":255,
+            "points": 1100,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/D/DEVEREAUX_anne_281.jpg",
             "image_name": "annie-devereaux.png"
         },
         {
             "name": "Jackson Tom",
-            "points": 252,
+            "points": 1200,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/D/DIACHENKO_vsevolod_2155.jpg",
             "image_name": "jackson-tom.png" 
         },
         {
             "name": "Vsevolod Diachenko",
-            "points": 246,
+            "points": 3700,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/D/DIACHENKO_vsevolod_2155.jpg",
             "image_name": "seva-diachenko.png"
         },
         {
             "name": "Courtney Buchanon",
-            "points": 245.2,
+            "points": 700,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/B/BUCHANAN_courtney_767.jpg",
             "image_name": "courtney-buchanon.png"
         },
         {
             "name": "Tom Fawcett",
-            "points": 216.0,
+            "points": 3000,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/D/DIACHENKO_vsevolod_2155.jpg",
             "image_name": "tom-fawcett.png"
         },
         {
             "name": "Adriano Morandini",
-            "points": 213.0,
+            "points": 2800,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/M/MORANDINI_adriano_2138.jpg",
             "image_name": "adriano-morandini.png"
         },
         {
             "name": "Flynn Goh",
-            "points": 207.1,
+            "points": 1300,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/D/DIACHENKO_vsevolod_2155.jpg",
             "image_name": "flynn-goh.png"
         },
         {
             "name": "David Pilkington",
-            "points": 189.0,
+            "points": 70,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/D/DIACHENKO_vsevolod_2155.jpg",
             "image_name": "david-pilkington.png"
         },
         {
             "name": "Tuulia Ijas",
-            "points": 176.0,
+            "points": 40,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/D/DIACHENKO_vsevolod_2155.jpg",
             "image_name": "tuulia-ijas.png"
         },
         {
             "name": "Dennis Wu",
-            "points": 164.0,
+            "points": 1700,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/D/DIACHENKO_vsevolod_2155.jpg",
             "image_name": "dennis-wu.png"
         },
         {
             "name": "Clover Thomas",
-            "points": 164.0,
+            "points": 32,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/T/THOMAS_clover_2438.jpg",
             "image_name": "clover-thomas.png"
         },
         {
             "name": "Hannah Goh",
-            "points": 152.5,
+            "points": 600,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/D/DIACHENKO_vsevolod_2155.jpg",
             "image_name": "hannah-goh.png"
         },
         {
             "name": "Bruno Charlesworth",
-            "points": 150.0,
+            "points": 1400,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/D/DIACHENKO_vsevolod_2155.jpg",
             "image_name": "bruno-charlesworth.png"
         },
         {
             "name": "Justin Guo",
-            "points": 146.0,
+            "points": 200,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/D/DIACHENKO_vsevolod_2155.jpg",
             "image_name": "justin-guo.png"
         },
         {
             "name": "Daniel Fernando",
-            "points": 137.0,
+            "points": 1600,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/D/DIACHENKO_vsevolod_2155.jpg",
             "image_name": "daniel-fernando.png"
         },
         {
             "name": "Tully Watt",
-            "points": 121.0,
+            "points": 1900,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/D/DIACHENKO_vsevolod_2155.jpg",
             "image_name": "tully-watt.png"
         },
         {
             "name": "Runhan(Jane) Yuan",
-            "points": 81.0,
+            "points": 900,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/D/DIACHENKO_vsevolod_2155.jpg",
             "image_name": "jane-yuan.png"
         },
         {
             "name": "Ella Ball",
-            "points": 77.0,
+            "points": 100,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/D/DIACHENKO_vsevolod_2155.jpg",
             "image_name": "ella-ball.png"
         },
         {
             "name": "Lily Whitehead",
-            "points": 73.0,
+            "points": 500,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/W/WHITEHEAD_lily_1871.jpg",
             "image_name": "lily-whitehead.png"
         },
         {
             "name": "Isaac Hayes",
-            "points": 62.0,
+            "points": 10,
             "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/D/DIACHENKO_vsevolod_2155.jpg",
             "image_name": "isaac-hayes.png"
+        },
+        {
+            "name": "Norbert Riedl",
+            "points": 300,
+            "file_url": "https://www.ausfencing.org/wp-content/uploads/Bios/R/RIEDL_norbert_981.jpg",
+            "image_name": "norbert-riedl.png"
         }
     ]
 }

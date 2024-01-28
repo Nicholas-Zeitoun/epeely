@@ -159,7 +159,7 @@ class TournamentsController < ApplicationController
       when 10
         poule_breakdown = { number_of_poules: 2, "poule_1_fencers" => [1,4,5,8,9], "poule_2_fencers" => [2,3,6,7,10] }
       when 11
-        poule_breakdown = { number_of_poules: 2, "poule_1_fencers" => [1,4,5,8,9], "poule_2_fencers" => [2,3,6,7,10,11] }
+        poule_breakdown = { number_of_poules: 2, "poule_1_fencers" => [1,4,5,8,9,11], "poule_2_fencers" => [2,3,6,7,10] }
       when 12
         poule_breakdown = { number_of_poules: 2, "poule_1_fencers" => [1,4,5,8,9,12], "poule_2_fencers" => [2,3,6,7,10,11] }
       when 13
@@ -169,9 +169,9 @@ class TournamentsController < ApplicationController
       when 15
         poule_breakdown = { number_of_poules: 3, "poule_1_fencers" => [1,6,7,12,13], "poule_2_fencers" => [2,5,8,11,14], "poule_3_fencers" => [3,4,9,10,15] }
       when 16
-        poule_breakdown = { number_of_poules: 3, "poule_1_fencers" => [1,6,7,12,13], "poule_2_fencers" => [2,5,8,11,14], "poule_3_fencers" => [3,4,9,10,15,16] }
+        poule_breakdown = { number_of_poules: 3, "poule_1_fencers" => [1,6,7,12,13,16], "poule_2_fencers" => [2,5,8,11,14], "poule_3_fencers" => [3,4,9,10,15] }
       when 17
-        poule_breakdown = { number_of_poules: 3, "poule_1_fencers" => [1,6,7,12,13], "poule_2_fencers" => [2,5,8,11,14,17], "poule_3_fencers" => [3,4,9,10,15,16] }
+        poule_breakdown = { number_of_poules: 3, "poule_1_fencers" => [1,6,7,12,13,16], "poule_2_fencers" => [2,5,8,11,14,17], "poule_3_fencers" => [3,4,9,10,15] }
       when 18
         poule_breakdown = { number_of_poules: 3, "poule_1_fencers" => [1,6,7,12,13,18], "poule_2_fencers" => [2,5,8,11,14,17], "poule_3_fencers" => [3,4,9,10,15,16] }
       when 19
@@ -181,9 +181,9 @@ class TournamentsController < ApplicationController
       when 21
         poule_breakdown = { number_of_poules: 3, "poule_1_fencers" => [1,6,7,12,13,18,19], "poule_2_fencers" => [2,5,8,11,14,17,20], "poule_3_fencers" => [3,4,9,10,15,16,21] }
       when 22
-        poule_breakdown = { number_of_poules: 4, "poule_1_fencers" => [1,8,9,16,17], "poule_2_fencers" => [2,7,10,15,18], "poule_3_fencers" => [3,6,11,14,19,22], "poule_4_fencers" => [4,5,12,13,20,21] }
+        poule_breakdown = { number_of_poules: 4, "poule_1_fencers" => [1,8,9,16,17,22], "poule_2_fencers" => [2,7,10,15,18,21], "poule_3_fencers" => [3,6,11,14,19], "poule_4_fencers" => [4,5,12,13,20] }
       when 23
-        poule_breakdown = { number_of_poules: 4, "poule_1_fencers" => [1,8,9,16,17], "poule_2_fencers" => [2,7,10,15,18,23], "poule_3_fencers" => [3,6,11,14,19,22], "poule_4_fencers" => [4,5,12,13,20,21] }
+        poule_breakdown = { number_of_poules: 4, "poule_1_fencers" => [1,8,9,16,17,23], "poule_2_fencers" => [2,7,10,15,18,22], "poule_3_fencers" => [3,6,11,14,19,21], "poule_4_fencers" => [4,5,12,13,20] }
       when 24
         poule_breakdown = { number_of_poules: 4, "poule_1_fencers" => [1,8,9,16,17,24], "poule_2_fencers" => [2,7,10,15,18,23], "poule_3_fencers" => [3,6,11,14,19,22], "poule_4_fencers" => [4,5,12,13,20,21] }
       when 25
@@ -195,7 +195,7 @@ class TournamentsController < ApplicationController
       when 28
         poule_breakdown = { number_of_poules: 4, "poule_1_fencers" => [1,8,9,16,17,24,25], "poule_2_fencers" => [2,7,10,15,18,23,26], "poule_3_fencers" => [3,6,11,14,19,22,27], "poule_4_fencers" => [4,5,12,13,20,21,28] }
       when 29
-        poule_breakdown = { number_of_poules: 5, "poule_1_fencers" => [1,10,11,20,21], "poule_2_fencers" => [2,9,12,19,22,29], "poule_3_fencers" => [3,8,13,18,23,28], "poule_4_fencers" => [4,7,14,17,24,27], "poule_5_fencers" => [5,6,15,16,25,26] }
+        poule_breakdown = { number_of_poules: 5, "poule_1_fencers" => [1,10,11,20,21,29], "poule_2_fencers" => [2,9,12,19,22,28], "poule_3_fencers" => [3,8,13,18,23,27], "poule_4_fencers" => [4,7,14,17,24,26], "poule_5_fencers" => [5,6,15,16,25] }
       when 30
         poule_breakdown = { number_of_poules: 5, "poule_1_fencers" => [1,10,11,20,21,30], "poule_2_fencers" => [2,9,12,19,22,29], "poule_3_fencers" => [3,8,13,18,23,28], "poule_4_fencers" => [4,7,14,17,24,27], "poule_5_fencers" => [5,6,15,16,25,26] }
       when 31
@@ -218,9 +218,9 @@ class TournamentsController < ApplicationController
         match_breakdown = [ 10, [0,1], [2,3], [4,0], [1,2], [4,3],
                                 [0,2], [1,4], [3,0], [2,4], [3,1],]
       when 6
-        match_breakdown = [ 15, [0,1], [3,2], [5,4], [2,0], [1,5],
-                                [4,3], [0,5], [2,4], [3,1], [4,0],
-                                [5,3], [1,2], [0,3], [4,1], [2,5]]
+        match_breakdown = [ 15, [0,1], [3,4], [1,2], [4,5], [2,0],
+                                [5,3], [1,4], [0,3], [4,2], [0,5],
+                                [3,1], [2,5], [4,0], [2,3], [5,1]]
       when 7
         match_breakdown = [ 21, [0,3], [1,4], [2,5], [6,0], [4,3],
                                 [1,2], [5,6], [4,0], [3,2], [5,1],
