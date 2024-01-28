@@ -6,7 +6,7 @@
         <thead>
           <tr>
           <th scope="col">Fencers</th>
-            <% @poule_fencers.each do |fencer, index| %>
+            <% @poule_fencers.each_with_index do |fencer, index| %>
               <td scope="col fs-6"> <%= fencer.name %> </td>
             <% end %>
           </tr>
@@ -14,7 +14,7 @@
         <tbody>
             <% @poule_table_rows.each_with_index do |row, index| %>
               <tr>
-                <td scope="row fs-6"><%= @poule_fencers[index].name %></td>
+                <td scope="row fs-6"><%= "#{index + 1}. #{@poule_fencers[index].name}"  %></td>
                   <% row.each do |score|%>
                     <% if score == "X" %>
                       <td class="table-dark">  </td>
@@ -45,9 +45,9 @@
           </tr>
         </thead>
         <tbody>
-          <% @poule_fencers.each do |fencer| %>
+          <% @poule_fencers.each_with_index do |fencer, index| %>
             <tr>
-              <td scope="row fs-6"><%= fencer.name %></td>
+              <td scope="row fs-6"><%= "#{index + 1}. #{fencer.name}" %></td>
               <td scope="row fs-6"><%= @fencer_victories["#{fencer.name}"] %></td>
               <td scope="row fs-6"><%= @fencer_victories["#{fencer.name}_points_for"] %></td>
               <td scope="row fs-6"><%= @fencer_victories["#{fencer.name}_points_against"] %></td>

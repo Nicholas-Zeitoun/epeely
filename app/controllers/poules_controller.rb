@@ -9,7 +9,7 @@ class PoulesController < ApplicationController
   # GET /poules/1
   def show
     # Details for the poule table
-    @poule_fencers = @poule.fencers.order(:fencer_id).uniq
+    @poule_fencers = @poule.fencers.order(points: :desc).uniq
     @poule_table_rows = []
     @poule_fencers.each_with_index do |fencer, index|
       @fencer_scores = get_fencer_scores(fencer)
